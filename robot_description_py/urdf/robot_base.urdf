@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="shakimabot">
+
+    <!-- 底座链接-->
+    <link name="base_link">
+        <visual>
+            <!-- 设置原点位置和旋转角度-->
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <!-- 几何形状:长方体-->
+        <geometry>
+            <box size="0.36 0.24 0.12" /> 
+        </geometry>
+        <!-- 材料设置为黑色-->
+        <material name="black">
+            <color rgba="0.0 0.0 1.0 0.5"/>
+        </material>
+        </visual>
+    </link>
+
+    <!-- 雷达传感器-->
+    <link name="laser_link">
+        <visual>
+        <!-- 设置原点位置和旋转角度-->
+        <origin xyz="0 0 0" rpy="0 0 0 " />
+        <!-- 几何形状：圆柱-->
+        <geometry>
+            <cylinder length="0.02" radius="0.05"/>
+        </geometry>
+        <!-- 材料设置为黑色-->
+        <material name="black">
+            <color rgba="0.0 0.0 0.0 0.8"/>
+        </material>
+    </visual>
+    </link>
+
+    <!-- 雷达传感器关节-->
+    <joint name="laser_joint" type="fixed">
+        <!-- 父链接：连接底座-->
+        <parent link="base_link"/>
+        <!-- 子链接：连接雷达-->
+        <child link="laser_link"/>
+        <!-- 关节原点位置-->
+        <origin xyz="0 0 0.075"/>
+    </joint>
+   
+</robot>  
