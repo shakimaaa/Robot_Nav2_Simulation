@@ -11,7 +11,7 @@
             <box size="0.36 0.24 0.12" /> 
         </geometry>
         <!-- 材料设置为黑色-->
-        <material name="black">
+        <material name="blue">
             <color rgba="0.0 0.0 1.0 0.5"/>
         </material>
         </visual>
@@ -24,7 +24,7 @@
         <origin xyz="0 0 0" rpy="0 0 0 " />
         <!-- 几何形状：圆柱-->
         <geometry>
-            <cylinder length="0.02" radius="0.05"/>
+            <cylinder length="0.04" radius="0.03"/>
         </geometry>
         <!-- 材料设置为黑色-->
         <material name="black">
@@ -33,6 +33,7 @@
     </visual>
     </link>
 
+
     <!-- 雷达传感器关节-->
     <joint name="laser_joint" type="fixed">
         <!-- 父链接：连接底座-->
@@ -40,7 +41,125 @@
         <!-- 子链接：连接雷达-->
         <child link="laser_link"/>
         <!-- 关节原点位置-->
-        <origin xyz="0 0 0.075"/>
+        <origin xyz="0 0 0.08"/>
+    </joint>
+
+
+    <!-- imu传感器-->
+    <link name="imu_link">
+        <visual>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+              <box size="0.02 0.02 0.02"/>
+        </geometry>
+      </visual>
+    </link>
+
+
+    <!-- imu传感器关节-->
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+        <origin xyz="0 0 0.02"/>
     </joint>
    
+
+    <!-- 左边1号车轮(左后)-->
+    <link name="left_wheel_1_link">
+        <visual>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </visual>
+    </link>
+
+    <!-- 左边1号车轮关节-->
+    <joint name="left_wheel_1_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_wheel_1_link" />
+        <origin xyz="-0.14 0.14 -0.06" />
+        <!-- 绕着y轴逆时针转-->
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- 左边2号车轮(左前)-->
+    <link name="left_wheel_2_link">
+        <visual>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </visual>
+    </link>
+
+    <!-- 左边2号车轮关节-->
+    <joint name="left_wheel_2_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_wheel_2_link" />
+        <origin xyz="0.14 0.14 -0.06" />
+        <!-- 绕着y轴逆时针转-->
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- 右边1号车轮(右后)-->
+    <link name="right_wheel_1_link">
+        <visual>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </visual>
+    </link>
+
+    <!-- 右边1号车轮关节-->  
+    <joint name="right_wheel_1_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="right_wheel_1_link" />
+        <origin xyz="-0.14 -0.14 -0.06" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- 右边2号车轮(右前)-->
+    <link name="right_wheel_2_link">
+        <visual>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </visual>
+    </link>
+
+    <!-- 右边2号车轮关节-->  
+    <joint name="right_wheel_2_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="right_wheel_2_link" />
+        <origin xyz="0.14 -0.14 -0.06" />
+        <axis xyz="0 1 0" />
+    </joint>
+    
+    <!-- odom -->
+  <link name="odom"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="odom"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.075" rpy="0 0 0"/>
+  </joint>
+
+
+
+
 </robot>  

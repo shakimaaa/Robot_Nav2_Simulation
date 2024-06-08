@@ -1,0 +1,90 @@
+[0.093s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.094s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x71181ed344c0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x71181eefffa0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x71181eefffa0>>)
+[0.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.243s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/shakima/robot_description_py'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.256s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_python' and name 'robot_description_py'
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.273s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.273s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.275s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/shakima/robot_description_py/install
+[0.276s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 272 installed packages in /opt/ros/humble
+[0.277s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'cmake_args' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'cmake_target' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'cmake_clean_cache' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'cmake_clean_first' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'cmake_force_configure' from command line to 'False'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'ament_cmake_args' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'catkin_cmake_args' from command line to 'None'
+[0.319s] Level 5:colcon.colcon_core.verb:set package 'robot_description_py' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.319s] DEBUG:colcon.colcon_core.verb:Building package 'robot_description_py' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/shakima/robot_description_py/build/robot_description_py', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/shakima/robot_description_py/install/robot_description_py', 'merge_install': False, 'path': '/home/shakima/robot_description_py', 'symlink_install': False, 'test_result_base': None}
+[0.319s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.320s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.321s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/shakima/robot_description_py' with build type 'ament_python'
+[0.321s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_description_py', 'ament_prefix_path')
+[0.323s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.323s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/hook/ament_prefix_path.ps1'
+[0.324s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/hook/ament_prefix_path.dsv'
+[0.324s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/hook/ament_prefix_path.sh'
+[0.325s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.325s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.569s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/shakima/robot_description_py'
+[0.570s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.570s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.904s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/shakima/robot_description_py': PYTHONPATH=/home/shakima/robot_description_py/build/robot_description_py/prefix_override:/home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/robot_description_py build --build-base /home/shakima/robot_description_py/build/robot_description_py/build install --record /home/shakima/robot_description_py/build/robot_description_py/install.log --single-version-externally-managed install_data
+[1.173s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/shakima/robot_description_py' returned '0': PYTHONPATH=/home/shakima/robot_description_py/build/robot_description_py/prefix_override:/home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/robot_description_py build --build-base /home/shakima/robot_description_py/build/robot_description_py/build install --record /home/shakima/robot_description_py/build/robot_description_py/install.log --single-version-externally-managed install_data
+[1.175s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py' for CMake module files
+[1.175s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py' for CMake config files
+[1.176s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py/lib'
+[1.176s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py/bin'
+[1.176s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py/lib/pkgconfig/robot_description_py.pc'
+[1.176s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages'
+[1.177s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_description_py', 'pythonpath')
+[1.177s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/hook/pythonpath.ps1'
+[1.177s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/hook/pythonpath.dsv'
+[1.178s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/hook/pythonpath.sh'
+[1.178s] Level 1:colcon.colcon_core.environment:checking '/home/shakima/robot_description_py/install/robot_description_py/bin'
+[1.179s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(robot_description_py)
+[1.179s] INFO:colcon.colcon_core.shell:Creating package script '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/package.ps1'
+[1.180s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/package.dsv'
+[1.180s] INFO:colcon.colcon_core.shell:Creating package script '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/package.sh'
+[1.181s] INFO:colcon.colcon_core.shell:Creating package script '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/package.bash'
+[1.182s] INFO:colcon.colcon_core.shell:Creating package script '/home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/package.zsh'
+[1.182s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/shakima/robot_description_py/install/robot_description_py/share/colcon-core/packages/robot_description_py)
+[1.183s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.183s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.183s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.183s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.188s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.188s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.188s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.201s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.202s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/shakima/robot_description_py/install/local_setup.ps1'
+[1.203s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/shakima/robot_description_py/install/_local_setup_util_ps1.py'
+[1.204s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/shakima/robot_description_py/install/setup.ps1'
+[1.205s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/shakima/robot_description_py/install/local_setup.sh'
+[1.206s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/shakima/robot_description_py/install/_local_setup_util_sh.py'
+[1.207s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/shakima/robot_description_py/install/setup.sh'
+[1.208s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/shakima/robot_description_py/install/local_setup.bash'
+[1.208s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/shakima/robot_description_py/install/setup.bash'
+[1.210s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/shakima/robot_description_py/install/local_setup.zsh'
+[1.210s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/shakima/robot_description_py/install/setup.zsh'

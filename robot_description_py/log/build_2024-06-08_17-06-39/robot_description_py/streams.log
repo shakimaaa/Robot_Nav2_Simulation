@@ -1,0 +1,21 @@
+[1.287s] Invoking command in '/home/shakima/robot_description_py': PYTHONPATH=/home/shakima/robot_description_py/build/robot_description_py/prefix_override:/home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/robot_description_py build --build-base /home/shakima/robot_description_py/build/robot_description_py/build install --record /home/shakima/robot_description_py/build/robot_description_py/install.log --single-version-externally-managed install_data
+[1.537s] running egg_info
+[1.538s] writing build/robot_description_py/robot_description_py.egg-info/PKG-INFO
+[1.539s] writing dependency_links to build/robot_description_py/robot_description_py.egg-info/dependency_links.txt
+[1.540s] writing entry points to build/robot_description_py/robot_description_py.egg-info/entry_points.txt
+[1.541s] writing requirements to build/robot_description_py/robot_description_py.egg-info/requires.txt
+[1.541s] writing top-level names to build/robot_description_py/robot_description_py.egg-info/top_level.txt
+[1.543s] reading manifest file 'build/robot_description_py/robot_description_py.egg-info/SOURCES.txt'
+[1.545s] writing manifest file 'build/robot_description_py/robot_description_py.egg-info/SOURCES.txt'
+[1.546s] running build
+[1.546s] running build_py
+[1.546s] running install
+[1.547s] running install_lib
+[1.548s] running install_data
+[1.549s] copying urdf/robot_base.urdf -> /home/shakima/robot_description_py/install/robot_description_py/share/robot_description_py/urdf
+[1.550s] running install_egg_info
+[1.552s] removing '/home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages/robot_description_py-0.0.0-py3.10.egg-info' (and everything under it)
+[1.555s] Copying build/robot_description_py/robot_description_py.egg-info to /home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages/robot_description_py-0.0.0-py3.10.egg-info
+[1.556s] running install_scripts
+[1.574s] writing list of installed files to '/home/shakima/robot_description_py/build/robot_description_py/install.log'
+[1.595s] Invoked command in '/home/shakima/robot_description_py' returned '0': PYTHONPATH=/home/shakima/robot_description_py/build/robot_description_py/prefix_override:/home/shakima/robot_description_py/install/robot_description_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/robot_description_py build --build-base /home/shakima/robot_description_py/build/robot_description_py/build install --record /home/shakima/robot_description_py/build/robot_description_py/install.log --single-version-externally-managed install_data
