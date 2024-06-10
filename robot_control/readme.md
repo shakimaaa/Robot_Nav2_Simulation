@@ -1,11 +1,16 @@
-RotateWheelNode: 控制机器人轮子速度的 ROS 2 节点
-本仓库包含 RotateWheelNode 类的头文件和源文件，该类是一个 ROS 2 节点，用于控制机器人的轮子速度。
+# RotateWheelNode: 控制机器人轮子速度的 ROS 2 节点
 
-头文件：rotate_wheel.hpp
-概述
-rotate_wheel.hpp 文件声明了 RotateWheelNode 类。该类通过发布关节状态消息，以指定的频率控制机器人的轮子速度。
+本仓库包含 `RotateWheelNode` 类的头文件和源文件，该类是一个 ROS 2 节点，用于控制机器人的轮子速度。
 
-文件结构
+## 头文件：`rotate_wheel.hpp`
+
+### 概述
+
+`rotate_wheel.hpp` 文件声明了 `RotateWheelNode` 类。该类通过发布关节状态消息，以指定的频率控制机器人的轮子速度。
+
+### 文件结构
+
+```cpp
 #ifndef ROBOT_CONTROL__ROTATE_WHEEL_HPP_
 #define ROBOT_CONTROL__ROTATE_WHEEL_HPP_
 
@@ -42,20 +47,28 @@ private:
 }  // namespace robot_control
 
 #endif  // ROBOT_CONTROL__ROTATE_WHEEL_HPP_
-主要组件
-类声明和成员变量:
-RotateWheelNode 继承自 rclcpp::Node，表示这是一个 ROS 2 节点。
-joint_states_publisher_ 是一个发布者，用于发布 sensor_msgs::msg::JointState 消息。
-joint_states_ 保存关节状态数据，包括位置和速度。
-joint_speeds_ 存储左右轮的速度。
-pub_rate_ 控制消息的发布频率。
-thread_ 是一个线程，用于定时发布关节状态消息。
-parameter_event_subscriber_ 订阅参数事件。
-源文件：rotate_wheel.cpp
-概述
-rotate_wheel.cpp 文件实现了 RotateWheelNode 类的具体功能。
+```
 
-构造函数
+## 主要组件
+
+- **类声明和成员变量:**
+  - `RotateWheelNode` 继承自 `rclcpp::Node`，表示这是一个 ROS 2 节点。
+  - `joint_states_publisher_` 是一个发布者，用于发布 `sensor_msgs::msg::JointState` 消息。
+  - `joint_states_` 保存关节状态数据，包括位置和速度。
+  - `joint_speeds_` 存储左右轮的速度。
+  - `pub_rate_` 控制消息的发布频率。
+  - `thread_` 是一个线程，用于定时发布关节状态消息。
+  - `parameter_event_subscriber_` 订阅参数事件。
+
+## 源文件：`rotate_wheel.cpp`
+
+### 概述
+
+`rotate_wheel.cpp` 文件实现了 `RotateWheelNode` 类的具体功能。
+
+### 构造函数
+
+```cpp
 RotateWheelNode::RotateWheelNode(const rclcpp::NodeOptions &options)
     : Node("rotate_fishbot_wheel", options), joint_speeds_{0.0, 0.0} {
     RCLCPP_INFO(this->get_logger(), "节点 rotate_fishbot_wheel 初始化...");
@@ -80,75 +93,30 @@ RotateWheelNode::RotateWheelNode(const rclcpp::NodeOptions &options)
         std::bind(&RotateWheelNode::on_parameter_event_callback, this, std::placeholders::_1)
     );
 }
-主要功能
-参数声明和初始化:
+```
+## 主要功能
 
-使用 declare_parameter 方法声明节点参数并设置默认值。
-使用 get_parameter 方法获取参数初始值，并存储在 joint_speeds_ 中。
-创建发布者:
+#### 参数声明和初始化
 
-创建一个发布者，用于发布 sensor_msgs::msg::JointState 消息。
-初始化关节状态:
+- 使用 `declare_parameter` 方法声明节点参数并设置默认值。
+- 使用 `get_parameter` 方法获取参数初始值，并存储在 `joint_speeds_` 中。
 
-使用 init_joint_states 方法初始化关节状态数据字段。
-启动发布线程:
+#### 创建发布者
 
-使用 std::thread 启动一个独立的线程，定时发布关节状态消息。
-订阅参数事件:
+- 创建一个发布者，用于发布 `sensor_msgs::msg::JointState` 消息。
 
-订阅 /parameter_events，监听参数变化，并使用 on_parameter_event_callback 方法处理这些变化。
-初始化关节状态
-cpp
-复制代码
-void RotateWheelNode::init_joint_states() {
-    joint_states_.header.frame_id = "";
-    joint_states_.name = {"left_wheel_joint", "right_wheel_joint"};
-    joint_states_.position = {0.0, 0.0};
-    joint_states_.velocity = joint_speeds_;
-    joint_states_.effort = {};
-}
-发布关节状态的线程函数
-void RotateWheelNode::thread_pub() {
-    auto last_update_time = std::chrono::steady_clock::now();
-    while (rclcpp::ok()) {
-        auto now = std::chrono::steady_clock::now();
-        std::chrono::duration<double> delta_time = now - last_update_time;
-        last_update_time = now;
+#### 初始化关节状态
 
-        joint_states_.position[0] += delta_time.count() * joint_states_.velocity[0];
-        joint_states_.position[1] += delta_time.count() * joint_states_.velocity[1];
+- 使用 `init_joint_states` 方法初始化关节状态数据字段。
 
-        joint_states_.velocity = joint_speeds_;
-        joint_states_.header.stamp = this->get_clock()->now();
-        joint_states_publisher_->publish(joint_states_);
-        pub_rate_->sleep();
-    }
-}
-参数事件回调函数
-void RotateWheelNode::on_parameter_event_callback(const rcl_interfaces::msg::ParameterEvent::SharedPtr event) {
-    for (const auto &new_parameter : event->new_parameters) {
-        if (new_parameter.name == "left_wheel_speed") {
-            joint_speeds_[0] = new_parameter.value.double_value;
-        } else if (new_parameter.name == "right_wheel_speed") {
-            joint_speeds_[1] = new_parameter.value.double_value;
-        }
-    }
+#### 启动发布线程
 
-    for (const auto &changed_parameter : event->changed_parameters) {
-        if (changed_parameter.name == "left_wheel_speed") {
-            joint_speeds_[0] = changed_parameter.value.double_value;
-        } else if (changed_parameter.name == "right_wheel_speed") {
-            joint_speeds_[1] = changed_parameter.value.double_value;
-        }
-    }
+- 使用 `std::thread` 启动一个独立的线程，定时发布关节状态消息。
 
-    for (const auto &deleted_parameter : event->deleted_parameters) {
-        if (deleted_parameter.name == "left_wheel_speed") {
-            joint_speeds_[0] = 0.0;
-        } else if (deleted_parameter.name == "right_wheel_speed") {
-            joint_speeds_[1] = 0.0;
-        }
-    }
-}
-总结
-rotate_wheel.hpp 和 rotate_wheel.cpp 文件中的 RotateWheelNode 类为使用 ROS 2 控制机器人轮子速度提供了全面的实现。该节点初始化参数，创建关节状态发布者，并订阅参数事件，以动态更新轮子速度。
+#### 订阅参数事件
+
+- 订阅 `/parameter_events`，监听参数变化，并使用 `on_parameter_event_callback` 方法处理这些变化。
+
+
+
+
