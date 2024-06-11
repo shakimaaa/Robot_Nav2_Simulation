@@ -1,0 +1,6 @@
+rotate_wheel:
+  ros__parameters:
+    left_front_wheel_speed: 0.0
+    left_back_wheel_speed: 0.0
+    right_front_wheel_speed: 0.0
+    right_back_wheel_speed: 0.0

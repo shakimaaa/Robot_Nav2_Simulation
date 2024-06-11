@@ -51,7 +51,7 @@ def generate_launch_description():
 
     #  将三个节点加入到启动描述内
     ld.add_action(robot_state_publisher_node)
-    ld.add_action(joint_state_publisher_node)
+    #ld.add_action(joint_state_publisher_node)
     ld.add_action(rviz2_node)
 
     return ld

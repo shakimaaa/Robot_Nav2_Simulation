@@ -65,7 +65,7 @@
    
 
     <!-- 左边1号车轮(左后)-->
-    <link name="left_wheel_1_link">
+    <link name="left_back_wheel_link">
         <visual>
           <origin xyz="0 0 0" rpy="1.57079 0 0"/>
           <geometry>
@@ -78,16 +78,16 @@
     </link>
 
     <!-- 左边1号车轮关节-->
-    <joint name="left_wheel_1_joint" type="continuous">
+    <joint name="left_back_wheel_joint" type="continuous">
         <parent link="base_link" />
-        <child link="left_wheel_1_link" />
+        <child link="left_back_wheel_link" />
         <origin xyz="-0.14 0.14 -0.06" />
         <!-- 绕着y轴逆时针转-->
         <axis xyz="0 1 0" />
     </joint>
 
     <!-- 左边2号车轮(左前)-->
-    <link name="left_wheel_2_link">
+    <link name="left_front_wheel_link">
         <visual>
           <origin xyz="0 0 0" rpy="1.57079 0 0"/>
           <geometry>
@@ -100,16 +100,16 @@
     </link>
 
     <!-- 左边2号车轮关节-->
-    <joint name="left_wheel_2_joint" type="continuous">
+    <joint name="left_front_wheel_joint" type="continuous">
         <parent link="base_link" />
-        <child link="left_wheel_2_link" />
+        <child link="left_front_wheel_link" />
         <origin xyz="0.14 0.14 -0.06" />
         <!-- 绕着y轴逆时针转-->
         <axis xyz="0 1 0" />
     </joint>
 
     <!-- 右边1号车轮(右后)-->
-    <link name="right_wheel_1_link">
+    <link name="right_back_wheel_link">
         <visual>
           <origin xyz="0 0 0" rpy="1.57079 0 0"/>
           <geometry>
@@ -122,15 +122,15 @@
     </link>
 
     <!-- 右边1号车轮关节-->  
-    <joint name="right_wheel_1_joint" type="continuous">
+    <joint name="right_back_wheel_joint" type="continuous">
         <parent link="base_link" />
-        <child link="right_wheel_1_link" />
+        <child link="right_back_wheel_link" />
         <origin xyz="-0.14 -0.14 -0.06" />
         <axis xyz="0 1 0" />
     </joint>
 
     <!-- 右边2号车轮(右前)-->
-    <link name="right_wheel_2_link">
+    <link name="right_front_wheel_link">
         <visual>
           <origin xyz="0 0 0" rpy="1.57079 0 0"/>
           <geometry>
@@ -143,9 +143,9 @@
     </link>
 
     <!-- 右边2号车轮关节-->  
-    <joint name="right_wheel_2_joint" type="continuous">
+    <joint name="right_front_wheel_joint" type="continuous">
         <parent link="base_link" />
-        <child link="right_wheel_2_link" />
+        <child link="right_front_wheel_link" />
         <origin xyz="0.14 -0.14 -0.06" />
         <axis xyz="0 1 0" />
     </joint>

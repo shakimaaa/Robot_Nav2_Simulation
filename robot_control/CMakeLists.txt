@@ -64,4 +64,11 @@ rclcpp_components_register_node(${PROJECT_NAME}
 
 ament_auto_package(
   INSTALL_TO_SHARE
+  launch
+  config
 )
+
+# install(
+#   DIRECTORY launch
+#   DESTINATION share/${PROJECT_NAME}/
+# )
