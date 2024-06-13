@@ -19,6 +19,12 @@ RotateWheelNode::RotateWheelNode(const rclcpp::NodeOptions & options)
   this->declare_parameter("right_front_wheel_speed", 0.0);
   this->declare_parameter("right_back_wheel_speed", 0.0);
 
+  this->declare_parameter("left_front_wheel_angle", 0.0);
+  this->declare_parameter("left_back_wheel_angle", 0.0);
+  this->declare_parameter("right_front_wheel_angle", 0.0);
+  this->declare_parameter("right_back_wheel_angle", 0.0);
+
+
   // 初始化参数
   auto left_front_wheel_speed = this->get_parameter("left_front_wheel_speed").as_double();
   auto left_back_wheel_speed = this->get_parameter("left_back_wheel_speed").as_double();
@@ -26,6 +32,13 @@ RotateWheelNode::RotateWheelNode(const rclcpp::NodeOptions & options)
   auto right_back_wheel_speed = this->get_parameter("right_back_wheel_speed").as_double();
   joint_speeds_ = {left_front_wheel_speed, left_back_wheel_speed, right_front_wheel_speed, right_back_wheel_speed};
   
+
+  auto left_front_wheel_angle = this->get_parameter("left_front_wheel_angle").as_double();
+  auto left_back_wheel_angle = this->get_parameter("left_back_wheel_angle").as_double();
+  auto right_front_wheel_angle = this->get_parameter("right_front_wheel_angle").as_double();
+  auto right_back_wheel_angle = this->get_parameter("right_back_wheel_angle").as_double();
+  joint_angles_ = {left_front_wheel_angle, left_back_wheel_angle, right_front_wheel_angle, right_back_wheel_angle};
+
   // 创建并初始化关节状态发布者
   joint_states_publisher_ = this->create_publisher<sensor_msgs::msg::JointState>("joint_states", 10);
 
@@ -74,16 +87,19 @@ void RotateWheelNode::init_joint_states()
   // 初始化关节状态消息的各个字段
   joint_states_.header.frame_id = ""; 
   joint_states_.name = {"left_front_wheel_joint", "left_back_wheel_joint", 
-                        "right_front_wheel_joint", "right_back_wheel_joint" };
-  joint_states_.position = {0.0, 0.0, 0.0, 0.0};
+                        "right_front_wheel_joint", "right_back_wheel_joint",
+                        "left_front_wheel_mount_joint", "left_back_wheel_mount_joint",
+                        "right_front_wheel_mount_joint", "right_back_wheel_mount_joint"};
+  joint_states_.position = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
   joint_states_.velocity = joint_speeds_;
   joint_states_.effort = {};
 }
 
-void RotateWheelNode::update_speed(const std::vector<double> & speeds)
+void RotateWheelNode::update_param(const std::vector<double> & speeds,  const std::vector<double> & angles)
 {
-  if (speeds.size() == 4) {
+  if (speeds.size() == 4 && angles.size() == 4) {
     joint_speeds_ = speeds;
+    joint_angles_ = angles;
   }
 }
 
@@ -101,6 +117,10 @@ void RotateWheelNode::thread_pub()
     joint_states_.position[1] += delta_time.count() * joint_states_.velocity[1];
     joint_states_.position[2] += delta_time.count() * joint_states_.velocity[2];
     joint_states_.position[3] += delta_time.count() * joint_states_.velocity[3];
+    joint_states_.position[4] = joint_angles_[0];
+    joint_states_.position[5] = joint_angles_[1];
+    joint_states_.position[6] = joint_angles_[2];
+    joint_states_.position[7] = joint_angles_[3];
     // 更新关节速度
     joint_states_.velocity = joint_speeds_;  
     // 更新时间戳
@@ -127,20 +147,36 @@ void RotateWheelNode::on_parameter_event_callback(const rcl_interfaces::msg::Par
       joint_speeds_[2] = new_parameter.value.double_value;
     } else if (new_parameter.name == "right_back_wheel_speed") {
       joint_speeds_[3] = new_parameter.value.double_value;
+    } else if (new_parameter.name == "left_back_wheel_angle") {
+      joint_angles_[1] = new_parameter.value.double_value;
+    } else if (new_parameter.name == "right_front_wheel_angle") {
+      joint_angles_[2] = new_parameter.value.double_value;
+    } else if (new_parameter.name == "right_back_wheel_angle") {
+      joint_angles_[3] = new_parameter.value.double_value;
     }
+
   }
 
     // 处理更改的参数
   for (const auto &changed_parameter : event->changed_parameters) {
-      if (changed_parameter.name == "left_front_wheel_speed") {
-        joint_speeds_[0] = changed_parameter.value.double_value;
-      } else if (changed_parameter.name == "left_back_wheel_speed") {
-        joint_speeds_[1] = changed_parameter.value.double_value;
-      } else if (changed_parameter.name == "right_front_wheel_speed") {
-        joint_speeds_[2] = changed_parameter.value.double_value;
-      } else if (changed_parameter.name == "right_back_wheel_speed") {
+    if (changed_parameter.name == "left_front_wheel_speed") {
+      joint_speeds_[0] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "left_back_wheel_speed") {
+      joint_speeds_[1] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "right_front_wheel_speed") {
+      joint_speeds_[2] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "right_back_wheel_speed") {
       joint_speeds_[3] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "left_front_wheel_angle") {
+      joint_angles_[0] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "left_back_wheel_angle") {
+      joint_angles_[1] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "right_front_wheel_angle") {
+      joint_angles_[2] = changed_parameter.value.double_value;
+    } else if (changed_parameter.name == "right_back_wheel_angle") {
+      joint_angles_[3] = changed_parameter.value.double_value;
     }
+    
   }
   
   for (const auto &deleted_parameter : event->deleted_parameters) {
@@ -152,7 +188,16 @@ void RotateWheelNode::on_parameter_event_callback(const rcl_interfaces::msg::Par
       joint_speeds_[2] = 0.0;
     } else if (deleted_parameter.name == "right_back_wheel_speed") {
       joint_speeds_[3] = 0.0;
+    } else if (deleted_parameter.name == "left_front_wheel_angle") {
+      joint_angles_[0] = 0.0;
+    } else if (deleted_parameter.name == "left_back_wheel_angle") {
+      joint_angles_[1] = 0.0;
+    } else if (deleted_parameter.name == "right_front_wheel_angle") {
+      joint_angles_[2] = 0.0;
+    } else if (deleted_parameter.name == "right_back_wheel_angle") {
+      joint_angles_[3] = 0.0;
     }
+
   }
   
 }

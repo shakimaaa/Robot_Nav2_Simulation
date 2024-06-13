@@ -30,7 +30,7 @@ private:
   // 初始化关节状态
   void init_joint_states();
   // 更新速度
-  void update_speed(const std::vector<double> & speeds);
+  void update_param(const std::vector<double> & speeds, const std::vector<double> & angles);
   // 发布关节状态的线程函数
   void thread_pub();
   // 参数事件回调函数
@@ -46,6 +46,8 @@ private:
   sensor_msgs::msg::JointState joint_states_;
   // 存储左右轮子的速度
   std::vector<double> joint_speeds_;
+  //储轮子角度
+  std::vector<double> joint_angles_;
   // 发布频率控制器
   std::shared_ptr<rclcpp::Rate> pub_rate_;
   // 发布线程

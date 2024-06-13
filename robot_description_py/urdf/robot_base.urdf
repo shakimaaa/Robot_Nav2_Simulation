@@ -62,6 +62,83 @@
         <child link="imu_link"/>
         <origin xyz="0 0 0.02"/>
     </joint>
+
+    <link name="left_front_wheel_mount_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.02 0.02 0.04"/>
+        </geometry>
+         <material name="black">
+           <color rgba="0.0 0.0 0.0 0.5" />
+         </material>
+      </visual>
+    </link>
+
+    <joint name="left_front_wheel_mount_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_front_wheel_mount_link"/>
+        <origin xyz="0.14 0.12 -0.08" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <link name="left_back_wheel_mount_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.02 0.02 0.04"/>
+        </geometry>
+         <material name="black">
+           <color rgba="0.0 0.0 0.0 0.5" />
+         </material>
+      </visual>
+    </link>
+
+    <joint name="left_back_wheel_mount_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_back_wheel_mount_link"/>
+        <origin xyz="-0.14 0.12 -0.08" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <link name="right_front_wheel_mount_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.02 0.02 0.04"/>
+        </geometry>
+         <material name="black">
+           <color rgba="0.0 0.0 0.0 0.5" />
+         </material>
+      </visual>
+    </link>
+
+    <joint name="right_front_wheel_mount_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="right_front_wheel_mount_link"/>
+        <origin xyz="0.14 -0.12 -0.08" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <link name="right_back_wheel_mount_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.02 0.02 0.04"/>
+        </geometry>
+         <material name="black">
+           <color rgba="0.0 0.0 0.0 0.5" />
+         </material>
+      </visual>
+    </link>
+
+    <joint name="right_back_wheel_mount_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="right_back_wheel_mount_link"/>
+        <origin xyz="-0.14 -0.12 -0.08" />
+        <axis xyz="0 0 1" />
+    </joint>
+
    
 
     <!-- 左边1号车轮(左后)-->
@@ -79,9 +156,9 @@
 
     <!-- 左边1号车轮关节-->
     <joint name="left_back_wheel_joint" type="continuous">
-        <parent link="base_link" />
+        <parent link="left_back_wheel_mount_link" />
         <child link="left_back_wheel_link" />
-        <origin xyz="-0.14 0.14 -0.06" />
+        <origin xyz="0 0 -0.03" />
         <!-- 绕着y轴逆时针转-->
         <axis xyz="0 1 0" />
     </joint>
@@ -101,9 +178,9 @@
 
     <!-- 左边2号车轮关节-->
     <joint name="left_front_wheel_joint" type="continuous">
-        <parent link="base_link" />
+        <parent link="left_front_wheel_mount_link" />
         <child link="left_front_wheel_link" />
-        <origin xyz="0.14 0.14 -0.06" />
+        <origin xyz="0 0 -0.03" />
         <!-- 绕着y轴逆时针转-->
         <axis xyz="0 1 0" />
     </joint>
@@ -123,9 +200,9 @@
 
     <!-- 右边1号车轮关节-->  
     <joint name="right_back_wheel_joint" type="continuous">
-        <parent link="base_link" />
+        <parent link="right_back_wheel_mount_link" />
         <child link="right_back_wheel_link" />
-        <origin xyz="-0.14 -0.14 -0.06" />
+        <origin xyz="0 0 -0.03" />
         <axis xyz="0 1 0" />
     </joint>
 
@@ -144,9 +221,9 @@
 
     <!-- 右边2号车轮关节-->  
     <joint name="right_front_wheel_joint" type="continuous">
-        <parent link="base_link" />
+        <parent link="right_front_wheel_mount_link" />
         <child link="right_front_wheel_link" />
-        <origin xyz="0.14 -0.14 -0.06" />
+        <origin xyz="0 0 -0.03" />
         <axis xyz="0 1 0" />
     </joint>
     
@@ -156,7 +233,7 @@
   <joint name="base_joint" type="fixed">
     <parent link="odom"/>
     <child link="base_link"/>
-    <origin xyz="0.0 0.0 0.075" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 0.13" rpy="0 0 0"/>
   </joint>
 
 
