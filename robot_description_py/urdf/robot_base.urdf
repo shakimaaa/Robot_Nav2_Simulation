@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="shakimabot">
 
-    <!-- 底座链接-->
+    <!-- 底座-->
     <link name="base_link">
         <visual>
             <!-- 设置原点位置和旋转角度-->
@@ -15,6 +15,19 @@
             <color rgba="0.0 0.0 1.0 0.5"/>
         </material>
         </visual>
+        <collision>
+          <origin xyz="0 0 0.0" rpy="0 0 0 "/>
+          <geometry>
+             <box size="0.36 0.24 0.12" />
+          </geometry>
+          <material name="blue">
+            <color rgba="0.0 0.0 1.0 0.5"/>
+          </material>
+        </collision>
+        <inertial>
+          <mass value="1"/>
+          <inertia ixx="0.012" ixy="0" ixz="0" iyy="0.01963333" iyz="0" izz="0.006"/>
+        </inertial>
     </link>
 
     <!-- 雷达传感器-->
@@ -31,6 +44,19 @@
             <color rgba="0.0 0.0 0.0 0.8"/>
         </material>
     </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.03"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 0.8"/>
+      </material>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0000358333333" ixy="0" ixz="0" iyy="0.000035833" iyz="0" izz="0.000045"/>
+    </inertial>
     </link>
 
 
@@ -53,6 +79,16 @@
               <box size="0.02 0.02 0.02"/>
         </geometry>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.02 0.02 0.02"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.1"/>
+          <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+        </inertial>
     </link>
 
 
@@ -73,8 +109,22 @@
            <color rgba="0.0 0.0 0.0 0.5" />
          </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0 "/>
+        <geometry>
+           <box size="0.02 0.02 0.04" />
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 0.5"/>
+        </material>
+      </collision>
+      <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="0.0000166" ixy="0" ixz="0" iyy="0.0000166" iyz="0" izz="0.0000066"/>
+      </inertial>
     </link>
 
+    <!-- 左前轮支架关节-->
     <joint name="left_front_wheel_mount_joint" type="continuous">
         <parent link="base_link" />
         <child link="left_front_wheel_mount_link"/>
@@ -92,6 +142,19 @@
            <color rgba="0.0 0.0 0.0 0.5" />
          </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0 "/>
+        <geometry>
+           <box size="0.02 0.02 0.04" />
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 0.5"/>
+        </material>
+      </collision>
+      <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="0.0000166" ixy="0" ixz="0" iyy="0.0000166" iyz="0" izz="0.0000066"/>
+      </inertial>
     </link>
 
     <joint name="left_back_wheel_mount_joint" type="continuous">
@@ -111,6 +174,19 @@
            <color rgba="0.0 0.0 0.0 0.5" />
          </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0 "/>
+        <geometry>
+           <box size="0.02 0.02 0.04" />
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 0.5"/>
+        </material>
+      </collision>
+      <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="0.0000166" ixy="0" ixz="0" iyy="0.0000166" iyz="0" izz="0.0000066"/>
+      </inertial>
     </link>
 
     <joint name="right_front_wheel_mount_joint" type="continuous">
@@ -130,6 +206,19 @@
            <color rgba="0.0 0.0 0.0 0.5" />
          </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0 "/>
+        <geometry>
+           <box size="0.02 0.02 0.04" />
+        </geometry>
+        <material name="black">
+          <color rgba="0.0 0.0 0.0 0.5"/>
+        </material>
+      </collision>
+      <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="0.0000166" ixy="0" ixz="0" iyy="0.0000166" iyz="0" izz="0.0000066"/>
+      </inertial>
     </link>
 
     <joint name="right_back_wheel_mount_joint" type="continuous">
@@ -152,6 +241,19 @@
               <color rgba="0.0 0.0 0.0 0.5" /> 
             </material>
         </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </collision>
+        <inertial>
+          <mass value="0.2"/>
+            <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+          </inertial>
     </link>
 
     <!-- 左边1号车轮关节-->
@@ -174,6 +276,19 @@
               <color rgba="0.0 0.0 0.0 0.5" /> 
             </material>
         </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </collision>
+        <inertial>
+          <mass value="0.2"/>
+            <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+          </inertial>
     </link>
 
     <!-- 左边2号车轮关节-->
@@ -196,6 +311,19 @@
               <color rgba="0.0 0.0 0.0 0.5" /> 
             </material>
         </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </collision>
+        <inertial>
+          <mass value="0.2"/>
+            <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+          </inertial>
     </link>
 
     <!-- 右边1号车轮关节-->  
@@ -217,6 +345,19 @@
               <color rgba="0.0 0.0 0.0 0.5" /> 
             </material>
         </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.032"/>
+          </geometry>
+            <material name="black">
+              <color rgba="0.0 0.0 0.0 0.5" /> 
+            </material>
+        </collision>
+        <inertial>
+          <mass value="0.2"/>
+            <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+          </inertial>
     </link>
 
     <!-- 右边2号车轮关节-->  
@@ -228,15 +369,194 @@
     </joint>
     
     <!-- odom -->
-  <link name="odom"/>
+  <link name="odom_"/>
 
   <joint name="base_joint" type="fixed">
-    <parent link="odom"/>
+    <parent link="odom_"/>
     <child link="base_link"/>
     <origin xyz="0.0 0.0 0.13" rpy="0 0 0"/>
   </joint>
 
+  <gazebo>
+    <!-- 四轮转向和驱动插件配置(舵轮) -->
+    <plugin name="four_wheel_steering" filename="libfour_wheel_steering_plugin.so">
+        <ros>
+            <namespace>/</namespace> <!-- ROS命名空间 -->
+            <remapping>cmd_vel:=cmd_vel</remapping> <!-- 重映射cmd_vel话题 -->
+        </ros>
+        <update_rate>30</update_rate> <!-- 插件的更新频率（Hz） -->
+        
+        <!-- 轮子配置 -->
+        <left_front_wheel>left_front_wheel_joint</left_front_wheel> <!-- 左前轮驱动关节 -->
+        <right_front_wheel>right_front_wheel_joint</right_front_wheel> <!-- 右前轮驱动关节 -->
+        <left_rear_wheel>left_back_wheel_joint</left_rear_wheel> <!-- 左后轮驱动关节 -->
+        <right_rear_wheel>right_back_wheel_joint</right_rear_wheel> <!-- 右后轮驱动关节 -->
 
+        <!-- 转向配置 -->
+        <left_front_steer>left_front_wheel_mount_joint</left_front_steer> <!-- 左前轮转向关节 -->
+        <right_front_steer>right_front_wheel_mount_joint</right_front_steer> <!-- 右前轮转向关节 -->
+        <left_rear_steer>left_back_wheel_mount_joint</left_rear_steer> <!-- 左后轮转向关节 -->
+        <right_rear_steer>right_back_wheel_mount_joint</right_rear_steer> <!-- 右后轮转向关节 -->
 
+        <!-- 运动学配置 -->
+        <wheel_separation_width>0.36</wheel_separation_width> <!-- 左右轮子之间的距离（米） -->
+        <wheel_separation_length>0.24</wheel_separation_length> <!-- 前后轮子之间的距离（米） -->
+        <wheel_diameter>0.065</wheel_diameter> <!-- 轮子的直径（米） -->
+
+        <!-- 限制参数 -->
+        <max_wheel_torque>20</max_wheel_torque> <!-- 最大轮子扭矩（牛·米） -->
+        <max_wheel_acceleration>1.0</max_wheel_acceleration> <!-- 最大轮子加速度（米/秒^2） -->
+
+        <!-- 输出配置 -->
+        <publish_odom>true</publish_odom> <!-- 是否发布里程计数据 -->
+        <publish_odom_tf>true</publish_odom_tf> <!-- 是否发布里程计的TF变换 -->
+        <publish_wheel_tf>true</publish_wheel_tf> <!-- 是否发布轮子的TF变换 -->
+        <odometry_frame>odom</odometry_frame> <!-- 里程计的框架名称 -->
+        <robot_base_frame>odom_</robot_base_frame> <!-- 机器人基础框架的名称 -->
+    </plugin>
+
+    <!-- 关节状态发布插件 -->
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+        <ros>
+            <remapping>~/out:=joint_states</remapping> <!-- 重映射joint_states话题 -->
+        </ros>
+        <update_rate>30</update_rate> <!-- 插件的更新频率（Hz） -->
+        <joint_name>left_front_wheel_joint</joint_name>
+        <joint_name>right_front_wheel_joint</joint_name>
+        <joint_name>left_back_wheel_joint</joint_name>
+        <joint_name>right_back_wheel_joint</joint_name>
+        <joint_name>left_front_wheel_mount_joint</joint_name>
+        <joint_name>right_front_wheel_mount_joint</joint_name>
+        <joint_name>left_back_wheel_mount_joint</joint_name>
+        <joint_name>right_back_wheel_mount_joint</joint_name>
+    </plugin>
+</gazebo>
+
+<plugin name="robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+  <ros>
+      <remapping>~/out:=joint_states</remapping> <!-- 将插件发布的默认话题 ~/out 重映射为 joint_states -->
+  </ros>
+  <update_rate>30</update_rate> <!-- 插件的更新频率（Hz），这里设置为每秒更新30次 -->
+  <joint_name>left_front_wheel_joint</joint_name> <!-- 左前轮驱动关节 -->
+  <joint_name>right_front_wheel_joint</joint_name> <!-- 右前轮驱动关节 -->
+  <joint_name>left_back_wheel_joint</joint_name> <!-- 左后轮驱动关节 -->
+  <joint_name>right_back_wheel_joint</joint_name> <!-- 右后轮驱动关节 -->
+  <joint_name>left_front_wheel_mount_joint</joint_name> <!-- 左前轮转向关节 -->
+  <joint_name>right_front_wheel_mount_joint</joint_name> <!-- 右前轮转向关节 -->
+  <joint_name>left_back_wheel_mount_joint</joint_name> <!-- 左后轮转向关节 -->
+  <joint_name>right_back_wheel_mount_joint</joint_name> <!-- 右后轮转向关节 -->
+</plugin>
+
+<gazebo reference="laser_link">
+  <material>Gazebo/Black</material>
+</gazebo>
+
+<gazebo reference="imu_link">
+  <sensor name="imu_sensor" type="imu">
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+          <ros>
+              <namespace>/</namespace> <!-- ROS命名空间 -->
+              <remapping>~/out:=imu</remapping> <!-- 将IMU传感器输出的默认话题重映射为imu -->
+          </ros>
+          <initial_orientation_as_reference>false</initial_orientation_as_reference> <!-- 是否将初始方向作为参考 -->
+      </plugin>
+      <always_on>true</always_on> <!-- 传感器是否始终开启 -->
+      <update_rate>100</update_rate> <!-- 传感器的更新频率（Hz），这里设置为100Hz -->
+      <visualize>true</visualize> <!-- 是否可视化传感器数据 -->
+      <imu>
+          <angular_velocity> <!-- 角速度配置 -->
+              <x>
+                  <noise type="gaussian"> <!-- 高斯噪声配置 -->
+                      <mean>0.0</mean> <!-- 噪声均值 -->
+                      <stddev>2e-4</stddev> <!-- 噪声标准差 -->
+                      <bias_mean>0.0000075</bias_mean> <!-- 噪声偏置均值 -->
+                      <bias_stddev>0.0000008</bias_stddev> <!-- 噪声偏置标准差 -->
+                  </noise>
+              </x>
+              <y>
+                  <noise type="gaussian">
+                      <mean>0.0</mean>
+                      <stddev>2e-4</stddev>
+                      <bias_mean>0.0000075</bias_mean>
+                      <bias_stddev>0.0000008</bias_stddev>
+                  </noise>
+              </y>
+              <z>
+                  <noise type="gaussian">
+                      <mean>0.0</mean>
+                      <stddev>2e-4</stddev>
+                      <bias_mean>0.0000075</bias_mean>
+                      <bias_stddev>0.0000008</bias_stddev>
+                  </noise>
+              </z>
+          </angular_velocity>
+          <linear_acceleration> <!-- 线性加速度配置 -->
+              <x>
+                  <noise type="gaussian">
+                      <mean>0.0</mean>
+                      <stddev>1.7e-2</stddev>
+                      <bias_mean>0.1</bias_mean>
+                      <bias_stddev>0.001</bias_stddev>
+                  </noise>
+              </x>
+              <y>
+                  <noise type="gaussian">
+                      <mean>0.0</mean>
+                      <stddev>1.7e-2</stddev>
+                      <bias_mean>0.1</bias_mean>
+                      <bias_stddev>0.001</bias_stddev>
+                  </noise>
+              </y>
+              <z>
+                  <noise type="gaussian">
+                      <mean>0.0</mean>
+                      <stddev>1.7e-2</stddev>
+                      <bias_mean>0.1</bias_mean>
+                      <bias_stddev>0.001</bias_stddev>
+                  </noise>
+              </z>
+          </linear_acceleration>
+      </imu>
+  </sensor>
+</gazebo>
+
+<gazebo reference="laser_link">
+  <sensor name="laser_sensor" type="ray">
+      <always_on>true</always_on> <!-- 传感器是否始终开启 -->
+      <visualize>true</visualize> <!-- 是否可视化传感器数据 -->
+      <update_rate>5</update_rate> <!-- 传感器的更新频率（Hz），这里设置为5Hz -->
+      <pose>0 0 0.075 0 0 0</pose> <!-- 传感器相对于链接的姿态（位置和旋转） -->
+      
+      <ray>
+          <scan>
+              <horizontal>
+                  <samples>360</samples> <!-- 水平方向上的采样点数 -->
+                  <resolution>1.000000</resolution> <!-- 水平方向上的分辨率 -->
+                  <min_angle>0.000000</min_angle> <!-- 最小扫描角度（弧度） -->
+                  <max_angle>6.280000</max_angle> <!-- 最大扫描角度（弧度） -->
+              </horizontal>
+          </scan>
+          <range>
+              <min>0.120000</min> <!-- 激光传感器的最小范围（米） -->
+              <max>3.5</max> <!-- 激光传感器的最大范围（米） -->
+              <resolution>0.015000</resolution> <!-- 范围分辨率（米） -->
+          </range>
+          <noise>
+              <type>gaussian</type> <!-- 噪声类型，使用高斯噪声 -->
+              <mean>0.0</mean> <!-- 噪声均值 -->
+              <stddev>0.01</stddev> <!-- 噪声标准差 -->
+          </noise>
+      </ray>
+
+      <plugin name="laserscan" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+              <!-- <namespace>/tb3</namespace> -->
+              <remapping>~/out:=scan</remapping> <!-- 将传感器输出的默认话题重映射为scan -->
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type> <!-- 输出的数据类型 -->
+          <frame_name>laser_link</frame_name> <!-- 传感器的框架名称 -->
+      </plugin>
+  </sensor>
+</gazebo>
 
 </robot>  
